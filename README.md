@@ -42,7 +42,7 @@ React의 가장 기본이 되는 `useState` Hook을 학습합니다.
 - **ESLint** - 코드 품질 관리
 - **Node.js 16+** - 런타임
 
-## 📂 폴더 구조
+## 폴더 구조
 
 ```
 react/
@@ -70,7 +70,7 @@ react/
 - [Vite 문서](https://vite.dev)
 - [ESLint 설정](https://eslint.org)
 
-## 📝 라이선스
+## 라이선스
 
 이 프로젝트는 학습 목적으로 제작되었습니다.
 
