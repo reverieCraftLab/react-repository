@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<body>
+<div id="root"></div>
+</body>
+<script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+    function App() {
+        const [amount, setAmount] = React.useState(0);
+        const [unit, setUnit] = React.useState("s");
+        const onChange = (event) => {
+            setAmount(event.target.value);
+        };
+        const reset = () => setAmount(0);
+        const changeTime = (newUnit) => {
+            reset();
+            setUnit(newUnit);
+        };
+        return (
+            <div>
+                <h3>Super Converter</h3>
+                <label htmlFor="second">second</label>
+                <input
+                    value={
+                        unit == "s" ? amount :
+                        unit == "m" ? amount * 60 :
+                        amount * 3600
+                    }
+                    id="second"
+                    placeholder="second"
+                    type="number"
+                    onChange={onChange}
+                    disabled={unit != "s"}
+                />
+                <label htmlFor="minutes">Minutes</label>
+                <input
+                    value={
+                        unit == "s" ? amount / 60 :
+                        unit == "m" ? amount :
+                        amount * 60
+                    }
+                    id="minutes"
+                    placeholder="amount"
+                    type="number"
+                    onChange={onChange}
+                    disabled={unit != "m"}
+                />
+                <label htmlFor="hours">Hours</label>
+                <input
+                    value={
+                        unit == "s" ? amount / 3600 :
+                        unit == "m" ? amount / 60 :
+                        amount
+                    }
+                    id="hours"
+                    placeholder="Hours"
+                    type="number"
+                    onChange={onChange}
+                    disabled={unit != "h"}
+                />
+                <div>
+                    <button type="text" onClick={reset}>Reset</button>
+                    <button type="text" onClick={() => changeTime("s")}>Second</button>
+                    <button type="text" onClick={() => changeTime("m")}>Minutes</button>
+                    <button type="text" onClick={() => changeTime("h")}>Hours</button>
+                </div>
+            </div>
+        );
+    }
+    const root = document.getElementById('root');
+    ReactDOM.render(<App />, root);
+</script>
+</html>
